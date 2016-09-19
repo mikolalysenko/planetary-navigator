@@ -1,0 +1,35 @@
+{
+  "name": "planetary-navigator",
+  "version": "1.0.0",
+  "description": "Index for fast distance and shortest path queries on weighted directed graphs",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "tape": "^4.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikolalysenko/planetary-navigator.git"
+  },
+  "keywords": [
+    "graph",
+    "navigation",
+    "route",
+    "planning",
+    "directed",
+    "weight",
+    "shortest"
+  ],
+  "author": "Mikola Lysenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikolalysenko/planetary-navigator/issues"
+  },
+  "homepage": "https://github.com/mikolalysenko/planetary-navigator#readme"
+}
