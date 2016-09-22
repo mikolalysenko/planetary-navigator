@@ -13,7 +13,6 @@ tape('hub simple tests', function (t) {
 
     for (i = 0; i < 10; ++i) {
       var index = createIndex(g)
-      console.log(JSON.stringify(index, null, 2))
       for (var source = 0; source < g.numVertices; ++source) {
         for (var sink = 0; sink < g.numVertices; ++sink) {
           t.same(
