@@ -5,6 +5,18 @@ var canvas = document.createElement('canvas')
 canvas.width = canvas.height = 512
 document.body.appendChild(canvas)
 
+var setRed = makeHub('red')
+var setBlue = makeHub('blue')
+var setRoute = (function () {
+  var div = document.createElement('div')
+  div.innerText = ''
+  div.style.display = 'block'
+  document.body.appendChild(div)
+  return function (str) {
+    div.innerText = str
+  }
+})()
+
 var CLICK_RADIUS = 30
 
 var context = canvas.getContext('2d')
@@ -12,7 +24,7 @@ var context = canvas.getContext('2d')
 var state = {
   mouse: [0, 0],
   buttons: [0, 0],
-  graph: genGrid(3, 3),
+  graph: genGrid(5, 5),
   blue: -1,
   red: -1
 }
@@ -39,9 +51,6 @@ function rebuildIndex (state) {
   state.topology = createGraph(numVerts, labeledEdges)
   state.index = createIndex(state.topology)
 }
-
-var setRed = makeHub('red')
-var setBlue = makeHub('blue')
 
 function makeHub (color) {
   var div = document.createElement('div')
@@ -201,6 +210,13 @@ function draw () {
 
   setLabels('red', setRed)
   setLabels('blue', setBlue)
+  if (state.red >= 0 && state.blue >= 0) {
+    setRoute(`
+      dist: ${state.index.distance(state.blue, state.red)}
+    `)
+  } else {
+    setRoute('')
+  }
 }
 
 window.requestAnimationFrame(draw)
